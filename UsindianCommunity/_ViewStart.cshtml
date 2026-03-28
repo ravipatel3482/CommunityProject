@@ -1,0 +1,20 @@
+﻿@{    
+
+    if (ViewBag.Area  == "indiaRegion")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (ViewBag.Area == "UsRegion")
+    {
+        Layout = "~/Views/Shared/_UsLayout.cshtml";
+    }
+    else if (ViewBag.Area == "CanadaLayout.cshtml")
+    {
+        Layout = "~/Views/Shared/_CanadaLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+}

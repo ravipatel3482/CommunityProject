@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Electronics home business Roplant services water Purifier In Gandhinagar  water Purifier In Ahmedabad Electrical Services">
+    <meta name="description" content="List your Business ,provide business listing facilty find business find electrican roservices water purifier services in ahmedabad">
+    <meta name="author" content="">
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
+    <link href="~/css/Register.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>@ViewData["Title"] - Business</title>
+    <environment include="Development, QA">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    </environment>
+    <environment include="Staging,Production,Development,QA">
+        <link rel="stylesheet"
+              crossorigin="anonymous"
+              href="https://sstackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+              asp-fallback-href="~/lib/font-awesome/css/fontawesome.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+    </environment>
+</head>
+<body>
+    @*<div class="main-top">
+            <div class="I-flag">
+                <a class="navbar-brand" asp-area="CanadaRegion" asp-controller="Home" asp-action="Index">
+                    <img class="imf-flag" src="~/images/canada.png" />
+                </a>
+            </div>
+            <div class="U-flag">
+                <a class="navbar-brand" asp-area="UsRegion" asp-controller="Home" asp-action="Index">
+                    <img class="imf-flag" src="~/images/us.jpg" />
+                </a>
+            </div>
+            BusinessPoint
+        </div>*@
+
+    <div class="header" id="myHeader">
+        <nav class="navcolorMenu navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            @*<div class="container">*@
+            <a class="navbar-brand" asp-area="indiaRegion" asp-controller="Home" asp-action="Index">Home</a>
+            @*<a class="navbar-brand" href="#">India</a>*@
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex">
+                <!-- Left Portion Of Menu Item-->
+                <ul class="navbar-nav">
+                    <!--Electronics Drop Dwon Menu-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Electronics
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="Product">Product</a>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="servieProvider" asp-route-AreaName="@ViewBag.Area">Services Provider</a>
+                            <div class="dropdown-divider"></div>
+                            @if (signinManager.IsSignedIn(User))
+                            {
+                                if (!(User.IsInRole("Services Provider")))
+                                {
+                                    <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="ProviderDeatilForms">Become Provider</a>
+                                    <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="ServiceInquiry">Service Inquiry</a>
+                                }
+
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="ProviderDeatilForms">Become Provider</a>
+                                <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="ServiceInquiry">Service Inquiry</a>
+                            }
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="Services">Services</a>
+                        </div>
+                    </li>
+                    <!--Auto Industry Drop Dwon Menu-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Auto-Mobile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="AutoMobile" asp-action="AllTwoWheel">Two  Wheel</a>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="AutoMobile" asp-action="CarInSale">Car</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="AutoMobile" asp-action="SaleYourVehicle">Sale Yours</a>
+                        </div>
+                    </li>
+                    @*<li class="nav-item ">
+                              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Job</a>
+                        </li>*@
+                    <!--Bsuiness Drop Dwon Menu-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Business
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Business" asp-action="BusinessInsale">In-Sale</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Business" asp-action="SaleYourBusiness">Sale-Your Business</a>
+                        </div>
+                    </li>
+                    <!--Residental Drop Dwon Menu-->
+                    @*<li class="nav-item dropdown ">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             Stay
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                             <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="Motel">Motel</a>
+                             <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="AvailableRoom">Room</a>
+                             <div class="dropdown-divider"></div>
+                             <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="AddavilableRoom">Post Room</a>
+                             <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="PostRequirement">What Your Looking</a>
+                         </div>
+                        </li>*@
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Stay
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="Motel">Motel</a>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="AvailableRoom">Room</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="AddavilableRoom">Post Room</a>
+                            <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Stay" asp-action="PostRequirement">What Your Looking</a>
+                        </div>
+                    </li>
+                    @*<li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Post
+                           </a>
+
+                        </li>*@
+                </ul>
+                <!--Account  Menu Item-->
+                <ul class="navbar-nav ml-auto">
+                    @if (signinManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                AdminActivity
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="CreateRole" asp-route-AreaName=@ViewBag.Area>AddRole</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ManageRole" asp-route-AreaName=@ViewBag.Area>ManageRole</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Register" asp-route-AreaName=@ViewBag.Area>Add New User</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="indiaRegion" asp-controller="Electronics" asp-action="ServiceOrder" asp-route-AreaName=@ViewBag.Area>ServicesOrder</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="ListUsers" asp-route-AreaName=@ViewBag.Area>See All User</a>
+                            </div>
+                        </li>
+                    }
+                    @if (signinManager.IsSignedIn(User))
+                    {
+                        @*<li class="nav-item">
+                                <form method="post" asp-controller="Account" asp-action="Logout" asp-area="">
+                                      <input type="hidden" name="area" value="@ViewContext?.ActionDescriptor?.RouteValues["area"]" />
+                                                            <button type="submit" style="width:auto" class="nav-link btn btn-link py-0">
+                                                      Logout @User.Identity.Name
+                                        </button>
+                                    </form>
+                            </li>*@
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="AccountInformation" asp-route-AreaName=@ViewBag.Area>Account</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="ChangePassword" asp-route-AreaName=@ViewBag.Area>Password</a>
+                                <div class="dropdown-divider"></div>
+                                <form method="post" class="dropdown-item" asp-controller="Account" asp-action="Logout" asp-area="" asp-route-AreaName=@ViewBag.Area>
+                                    <button type="submit" style="width:auto;font:bold"
+                                            class="nav-link btn btn-link py-0">
+                                        Logout
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register" asp-route-AreaName=@ViewBag.Area>
+                                Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login" asp-route-AreaName=@ViewBag.Area>
+                                login
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @*</div>*@
+        </nav>
+    </div>
+
+
+    <div class="content mb-5">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - BusinessPoint - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

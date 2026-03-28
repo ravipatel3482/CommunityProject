@@ -1,0 +1,75 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "User Login";
+    
+ }
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="container col-lg-4">
+        <div class="col-md-12">
+            <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" asp-route-AreaName="@ViewBag.Area">
+                <div>
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                        <button type="submit" class="btn btn-primary"
+                                name="provider" value="@provider.Name"
+                                title="Log in using your @provider.DisplayName account">
+                            @provider.DisplayName
+                        </button>
+                    }
+                </div>
+            </form>
+        </div>
+
+       
+
+
+        <h1 class="text-center">User Login</h1>
+        <div class="col-md-12">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <div class="inputWithIcon">
+                        <input type="text" asp-for="Email" placeholder="UserEmail" class="form-control" />
+                        <i class="fa fa-envelope fa-lg fa-fw"></i>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <div class="inputWithIcon">
+                        <input type="password" asp-for="Password" placeholder="Password" class="form-control" />
+                        <i class="fa  fa-key"></i>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="Rememberme"></label>
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                @if (ViewBag.returnurl != null)
+                {
+                    <span><a asp-controller="Account" asp-action="register" asp-route-ReturnUrl=@ViewBag.returnurl asp-route-AreaName="@ViewBag.Area" class="align-content-center">Register</a></span>
+                }
+                else
+                {
+                    <span>
+                        <a asp-controller="Account" asp-action="register" asp-route-AreaName=@ViewBag.Area
+                           class="align-content-center">Register</a>
+                    </span>
+                    <br />
+                    <span>
+                        <a asp-controller="Account" asp-action="ForgotPassword" asp-route-AreaName=@ViewBag.Area
+                           class="align-content-center">ForgetPassword</a>
+                    </span>
+                }
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>

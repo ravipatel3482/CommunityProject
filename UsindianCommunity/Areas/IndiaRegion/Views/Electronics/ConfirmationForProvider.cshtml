@@ -1,0 +1,39 @@
+﻿@model ServicesProvider
+@{
+    ViewBag.Title = "Provider-Confirmation";
+    ViewBag.Area = "indiaRegion";
+}
+<div class="row">
+    <div class="mb-5 col-lg-2">
+        <main role="main">
+        
+        </main>
+    </div>
+
+    <div class="container border border-dark p-3 mb-5 col-lg-8 col-sm-12">
+        <main role="main" class="pb-3">
+            
+            <br />
+            <H1>Thanks For Becoming Services Provider</H1>
+            <div class="card">
+                <div class="card-header">
+                    Your Service Provider Number    @Model.ProviderId
+                </div>
+                <br />
+                <div class="card-body">
+                    @Model.ServiceYouProvide
+                    <br />
+                </div>
+                <br />
+                <div class=card-footer>
+                    We will Display You On Top List
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="mb-5 col-lg-2">
+        <main role="main">
+
+        </main>
+    </div>
+</div>

@@ -1,0 +1,224 @@
+﻿@model ServiceproviderViewModel
+@{
+    ViewBag.Title = "SaveServiceProviderInformation";
+    //ViewBag.Area = ViewBag.Area;
+}
+<div class="Row">
+    <div class="col-md-3"></div>
+    <div class="container">
+        <form method="post"  enctype="multipart/form-data" asp-controller="Electronics" asp-action="ProviderDeatilForms">
+            <h1>Fill detail Along With Your Business Address</h1>
+            <div class="col-md-8">
+                <input type="hidden" asp-for="ApplicationUserId" />
+                <input hidden asp-for="AddressId" />
+                <input hidden asp-for="stateID" />
+                @if (Model.FirstName == "" && Model.phoneNumber == "")
+                {
+                    <div class="form-group row">
+                        <label asp-for="FirstName" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="FirstName" type="text" placeholder="FirstName" class="form-control" />
+                                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="phoneNumber" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="phoneNumber" type="text" placeholder="Contact-Number" class="form-control" />
+                                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group row">
+                        <label asp-for="FirstName" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="FirstName" type="text" readonly placeholder="FirstName" class="form-control" />
+                                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="phoneNumber" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="phoneNumber" type="text" readonly placeholder="Contact-Number" class="form-control" />
+                                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                }
+                <div class="form-group row">
+                    <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="Email" readonly type="text" class="form-control" placeholder="Email">
+                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="BusinessName" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="BusinessName" type="text" class="form-control" placeholder="Name Of Business">
+                            <i class="fa fa-address-book fa-lg fa-fw"></i>
+                        </div>
+                        <span asp-validation-for="BusinessName" class="text-danger"></span>
+                    </div>
+                </div>
+                @if("false" == ViewBag.AddressFlag)
+                {
+                    <div class="form-group row">
+                        <label asp-for="BusinessAddress" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="BusinessAddress" readonly type="text" class="form-control" placeholder="BusinessAddress">
+                                <i class="fa fa-address-book fa-lg fa-fw"></i>
+                            </div>
+                            <span asp-validation-for="BusinessAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="IndiaState" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <select asp-for="IndiaState" disabled class="form-control" asp-items="Html.GetEnumSelectList<IndiaState>()">
+                                <option value="">Select State</option>
+                            </select>
+                            <span asp-validation-for="stateID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="City" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="City" readonly type="text" class="form-control" placeholder="City">
+                                <i class="fa fa-building fa-lg fa-fw"></i>
+                            </div>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="ZipCode" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <div class="inputWithIcon">
+                                <input asp-for="ZipCode" readonly type="text" class="form-control" placeholder="ZipCode">
+                                <i class="fa fa-map-pin fa-lg fa-fw" araia-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                }
+                else{
+                <div class="form-group row">
+                    <label asp-for="BusinessAddress" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="BusinessAddress" type="text" class="form-control" placeholder="BusinessAddress">
+                            <i class="fa fa-address-book fa-lg fa-fw"></i>
+                        </div>
+                        <span asp-validation-for="BusinessAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="stateID" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <select asp-for="IndiaState" class="form-control" asp-items="Html.GetEnumSelectList<IndiaState>()"><option value="">Select State</option>
+                        </select>
+                        <span asp-validation-for="IndiaState" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="City" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="City" type="text" class="form-control" placeholder="City">
+                            <i class="fa fa-building fa-lg fa-fw"></i>
+                        </div>
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="ZipCode" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="ZipCode" type="text" class="form-control" placeholder="ZipCode">
+                            <i class="fa fa-map-pin fa-lg fa-fw" araia-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+                </div>
+                }
+                <div class="form-group row">
+                    <label asp-for="Service" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="inputWithIcon">
+                            <input asp-for="Service" type="text" class="form-control" placeholder="Describe What Kind Services You Provide">
+                            <i class="fa fa-wrench fa-lg fa-fw"></i>
+                        </div>
+                        <span asp-validation-for="Service" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="ServicesTypes" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        @for (int i = 0; i < Model.ServicesTypes.Count; i++)
+                        {
+                            <div class="form-check m-1">
+                                <input type="hidden" asp-for="@Model.ServicesTypes[i].ServicesTypeId" />
+                                <input type="hidden" asp-for="@Model.ServicesTypes[i].ServiceType" />
+                                <input asp-for="@Model.ServicesTypes[i].isSelected" type="checkbox" class="form-check-input" />
+                                <label class="form-check-label" asp-for="@Model.ServicesTypes[i].isSelected">@Model.ServicesTypes[i].ServiceType</label>
+                            </div>
+                        }
+                        <span asp-validation-for="ServicesTypes" id="CheckBoxValidationMessage" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="BusinessPhoto" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+                            @*<div class="inputWithIcon">*@
+                            <input asp-for="BusinessPhoto" id="Photo" class="form-control custom-file-input">
+                            @*</div>*@
+                            <label class="custom-file-label"><i class="fa fa-camera-retro fa-lg fa-fw"></i> Choose File...</label>
+                            <span asp-validation-for="BusinessPhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 ml-auto mr-0">
+                        <button id="Submit" type="submit" class="btn btn-primary" style="width:auto">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-1"></div>
+
+</div>
+@section Scripts{
+    <script>
+        
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}

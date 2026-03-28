@@ -1,0 +1,41 @@
+﻿@model ServicesOrder
+@{
+    ViewBag.Title = "ServicesOrder-Confirmation";
+    ViewBag.Area = ViewBag.Area;
+}
+<div class="row">
+    <div class="mb-5 col-lg-2">
+        <main role="main">
+
+        </main>
+    </div>
+
+    <div class="container border border-dark p-3 mb-5 col-lg-8 col-sm-12">
+        <main role="main" class="pb-3">
+
+            <br />
+            <H1>Thanks For Your Services Inquiry</H1>
+            <div class="card">
+                <div class="card-header">
+                    Your Service Inquiry Number    @Model.ServicesInquiryID
+                </div>
+                <br />
+                <div class="card-body">
+                    @Model.ServicesDescription
+                    <br />
+                </div>
+                <br />
+                <div class=card-footer>
+                    Services Status -Open <br />
+                    Some one contact you shortly
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="mb-5 col-lg-2">
+        <main role="main">
+
+        </main>
+    </div>
+</div>
+

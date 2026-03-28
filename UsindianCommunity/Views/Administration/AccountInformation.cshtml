@@ -1,0 +1,19 @@
+﻿@model ApplicationUser 
+
+@{
+    ViewBag.Title = "User-Information";
+    ViewBag.Area = ViewBag.Area;
+    //var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "noimage.jpg");
+}
+<div class="row">
+   
+    @*<div class="col-md-4 border border-light">
+        <img class="imageThumbnail"  src="~/images/noimage.png"  asp-append-version="true"/>
+    </div>*@
+    <div class="col-md-8 border-light border border-light"" style="border-color:lightblue">
+       Name:@Model.LastName
+       Email:@Model.Email
+       Phone:@Model.PhoneNumber
+    </div>
+</div>
+

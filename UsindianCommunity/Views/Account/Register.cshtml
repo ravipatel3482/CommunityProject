@@ -1,0 +1,89 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "User Registration";
+    TempData["Area"] = ViewBag.Area;
+}
+
+       
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class=" container col-lg-4 col-sm-12">
+                <h1 class="text-center">User Registration</h1>
+                <form method="post">
+                    <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="FirstName" type="text" placeholder="FirstName" class="form-control" />
+                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="LastName" type="text" placeholder="LastName" class="form-control" />
+                            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="Phone" type="text" placeholder="Contact-Number" class="form-control" />
+                            <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="Email" type="text" placeholder="Email" class="form-control" />
+                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
+                            <i class="fa  fa-key"></i>
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="ConfirmPassword" type="password" placeholder="Password" class="form-control" />
+                            <i class="fa fa-key"></i>
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+
+                    @if (signinManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.roles, htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @*ViewBag.CityList is holding all the cities values*@
+                                @Html.DropDownListFor(model => model.roles, ViewBag.Roles as SelectList, "Assign Role", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                    @Html.LabelFor(x => Model.roles, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DropDownListFor(M => M.roles, new SelectList(Model.roles, "Id", "Name"), "Assign Role", htmlAttributes: new { @class = "form-control", @Id = "Id" })
+                    </div>
+                </div>*@
+                    }
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary align">Register</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    

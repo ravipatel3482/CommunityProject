@@ -1,0 +1,132 @@
+﻿@model ServicesOrderViewModel
+@{
+    ViewBag.Title = "Services-InquireForm";
+    ViewBag.Area = "indiaRegion";
+    TempData["AddressFlag"] = ViewBag.AddressFlag;
+}
+<div class="row">
+    <div class="col-lg-6">
+
+    </div>
+    <div class="container  border p-3 mb-5 m-0 col-lg-4" style="border-top:1px medium">
+        <h1>
+            Service Inquire
+        </h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input hidden asp-for="ApplicationUserId" />
+                    @if (Model.Name == "" && Model.PhoneNo == "")
+                    {
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="Name" type="text" placeholder="Name" class="form-control" />
+                                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNo"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="PhoneNo" type="text" placeholder="Contact-Number" class="form-control" />
+                                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="Name" readonly type="text" placeholder="Name" class="form-control" />
+                                <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNo"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="PhoneNo" readonly type="text" placeholder="Contact-Number" class="form-control" />
+                                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <div class="inputWithIcon">
+                            <input asp-for="Email" type="text"  readonly placeholder="Email" class="form-control" />
+                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                        <span asp-validation-for="Email" id="err" class="text-danger"></span>
+
+                    </div>
+
+                    @if (!ViewBag.AddressFlag)
+                    {
+                        <div class="form-group">
+                            <label asp-for="ServicesAddress"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="ServicesAddress" type="text" placeholder="Services Address" class="form-control" />
+                                <i class="fa fa-home  fa-lg fa-fw" aria-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="ServicesAddress" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CityId, htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.DropDownListFor(m => m.CityId, (ViewBag.City as SelectList), "Select City", new { @class = "form-control" })
+                            </div>
+                            <span asp-validation-for="CityId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Zipcode"></label>
+                            <div class="inputWithIcon">
+                                <input asp-for="Zipcode" type="text" placeholder="Pincode" class="form-control" />
+                                <i class="fa fa-map-pin fa-lg fa-fw" araia-hidden="true"></i>
+                            </div>
+                            <span asp-validation-for="Zipcode" class="text-danger"></span>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <input hidden asp-for="AddressId" />
+                        <input hidden asp-for="ServicesAddress" />
+                        <input hidden asp-for="CityId" />
+                        <input hidden asp-for="Zipcode" />
+
+                    }
+                    <div class="form-group">
+                        <label asp-for="ServicesDescription"></label>
+                        <div class="inputWithIcon">
+                            <textarea asp-for="ServicesDescription" title="Enter Services Description" placeholder="Service Description Like Air Conditionar Not Work...." class="form-control"></textarea>
+                        </div>
+                        <span asp-validation-for="ServicesDescription" class="text-danger"></span>
+                    </div>                 
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary align">Save Inquire</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+    @section Scripts {
+        @*<script src="~/js/site.js"></script>
+        <script type="text/javascript" language="javascript">
+            function DisableBackButton() {
+                window.history.forward()
+            }
+            DisableBackButton();
+            window.onload = DisableBackButton;
+            window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+            window.onunload = function () { void (0) }
+        </script>*@
+    }

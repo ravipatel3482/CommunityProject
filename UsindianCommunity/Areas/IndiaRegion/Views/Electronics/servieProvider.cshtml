@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ServiceProviderDisplayViewModel>
+@{ 
+    ViewBag.Title = "ServicesProvider";
+ }
+
+<style type="text/css">
+    .b {
+        display: inline-block;
+        height: 240px; 
+      }
+</style>
+<div class="row">
+    <div class="mb-5 col-md-2 col-sm-12">
+    </div>
+    @if (Model.Any())
+    {
+        <div class="container mb-5  col-md-10 col-sm-10">
+
+            @foreach (var ServiceProvider in Model)
+            {
+                var photoPathToDisplay = @Url.Content("~/images/") + (ServiceProvider.PhotoPath ?? "no-image.png");
+                <div class="row  p-1 mb-1">
+                    <div class="b border border-dark col-md-2 col-sm-2" style="width:180px">
+                        <img class="imageThumbnail" src="@photoPathToDisplay" asp-append-version="true" />
+                    </div>
+                    <div class="b border border-dark p-1 col-md-6 col-sm-12">
+                        <div class="border border-dark border">
+                            <h1 class="text-center">@ServiceProvider.BusinessName</h1>
+                        </div>
+                        <div class="border border-dark">
+                            <table>
+                                <tr>
+                                    <td>Servie Provided:</td>
+                                    <td>@ServiceProvider.ServicesProvided</td>
+                                </tr>
+                                <tr>
+                                    <td>Servie Offered:</td>
+                                    <td>@ServiceProvider.ServiceType</td>
+                                </tr>
+                                <tr>
+                                    <td>Business Contact:</td>
+                                    <td>@ServiceProvider.OwnerName : @ServiceProvider.PhoneNumber  </td>
+                                </tr>
+                                <tr>
+                                    <td>Business Email:</td>
+                                    <td>@ServiceProvider.Email</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Business Address:
+                                    </td>
+                                    <td>
+                                        @ServiceProvider.Address,-- @ServiceProvider.City,-- @ServiceProvider.State
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            }
+            
+        </div>
+    }
+    else
+    {
+    <h1>Right Now No Service Provider Availbale</h1>
+    }
+</div>

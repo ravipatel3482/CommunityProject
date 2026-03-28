@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "BusinessPoint";
+}
+<div class="container" border border-light p-3 mb-4">
+    <main role="main" class="pb-3">
+        <div class="text-center">
+            <h1 class="display-3 align-content-center">Select Your Country </h1>
+            <div class="card-deck" id="indiaRegion">
+                <div class="card m-3" style="min-width: 20rem; max-width:30.5%;">
+                    <a class="card-block stretched-link text-decoration-none" asp-area="indiaRegion" asp-controller="Home" asp-action="index">
+                        <div class="card-header">
+                            India
+                        </div>
+                        <img class="card-img-top imageThumbnail" src="~/images/india.png" asp-append-version="true" />
+                    </a>
+                </div>
+                <div class="card m-3" style="min-width: 20rem; max-width:30.5%;" id="indiaRegion">
+                    <a class="card-block stretched-link text-decoration-none" asp-area="UsRegion" asp-controller="Home" asp-action="index">
+                        <div class="card-header">
+                            Us
+                        </div>
+                        <img class="card-img-top imageThumbnail" src="~/images/usflag.png" asp-append-version="true" />
+                    </a>
+                </div>
+                <div class="card m-3" style="min-width: 20rem; max-width:30.5%;" id="indiaRegion">
+                    <a class="card-block stretched-link text-decoration-none" asp-area="CanadaRegion" asp-controller="Home" asp-action="index">
+                        <div class="card-header">
+                            Canada
+                        </div>
+                        <img class="card-img-top imageThumbnail" src="~/images/canada.png"
+                             asp-append-version="true" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        </main>
+        </div>
+        @section Scripts {
+            <script src="~/js/site.js"></script>
+            <script type="text/javascript" language="javascript">
+                function DisableBackButton() {
+                    window.history.forward()
+                }
+                DisableBackButton();
+                window.onload = DisableBackButton;
+                window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+                window.onunload = function () { void (0) }
+            </script>
+        }

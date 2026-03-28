@@ -1,0 +1,38 @@
+﻿@model CreateRoleViewModel
+@{
+    ViewBag.Title = "Create_Role";
+    ViewBag.Area = ViewBag.Area;
+    TempData["Area"] = ViewBag.Area;
+}
+<div class="row">
+    <div class="col-lg-4">
+
+    </div>
+    <div class="container col-lg-4">
+        <h1 class="text-center">Create Role</h1>
+        <form method="post" class="mt-3">
+            <input type="hidden" name="area" value="@ViewBag.Area" />
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+            <div class="form-group row">
+                <label asp-for="RoleName" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="RoleName" class="form-control" placeholder="Name">
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 ml-auto mr-0">
+                    <button type="submit"  class="btn btn-primary" style="width:auto">
+                        Create Role
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+</div>
